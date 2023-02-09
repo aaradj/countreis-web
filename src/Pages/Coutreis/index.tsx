@@ -33,6 +33,7 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
         <option value="Asia">Asia</option>
         <option value="Africa">Africa</option>
         <option value="Americas">Americas</option>
+        <option value="Oceania">Oceania</option>
       </select>
       {data?.map((item: any, length) => {
         const { name, region, population, flags, capital }: any = item;
