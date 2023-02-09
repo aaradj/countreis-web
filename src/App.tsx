@@ -1,8 +1,9 @@
+import DataContextProvider from "./Components/Context/DataContextProvider";
+import Store from "./Components/Store";
+
 const App = () => {
   return (
-    <div>
-      <h1>Countreis Web</h1>
-    </div>
+    <DataContextProvider><Store /></DataContextProvider>
   );
 };
 export default App;
