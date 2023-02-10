@@ -21,7 +21,7 @@ const Navbar = () => {
           sx={{
             background: darkMode ? "hsl(209, 23%, 22%)" : "white",
             padding: "0 2rem",
-            "@media(max-width:600px)": { padding: "0 .5rem" },
+            // "@media(max-width:600px)": { padding: "0 .5rem" },
           }}
         >
           <Toolbar
