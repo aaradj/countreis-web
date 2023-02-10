@@ -37,7 +37,6 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
       </select>
       {data?.map((item: any, length) => {
         const { name, region, population, flags, capital }: any = item;
-        console.log(name.common);
         if (Stateregion === region && search === "") {
           return (
             <div key={length}>

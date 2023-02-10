@@ -26,5 +26,21 @@ const spliter = (population: number) => {
     return newNumber;
   }
 };
+const getNativeName = (name: any): any => {
+  let value: any = Object.values(name);
+  return value[0].common;
+};
+const getValue = (curency: any) => {
+  JSON.stringify(curency);
+  let values: any = Object.values(curency);
+  return values[0].name;
+};
+const getLanguage = (languages: any): Array<string> => {
+  let values: any = Object.values(languages);
+  return values;
+};
+const getBorders = (border:any):Array<string> =>{
+  return border;
+}
 
-export { spliter };
+export { spliter, getLanguage, getNativeName, getValue , getBorders };
