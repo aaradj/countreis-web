@@ -100,13 +100,18 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                     background: darkMode ? "hsl(209, 23%, 22%)" : "white",
                     display: "flex",
                     flexDirection: "column",
-                    width: "25%",
+                    width: "20%",
                     height: "25rem",
                     margin: "1.5rem",
                     overflow: "hidden",
                     borderRadius: "5px",
-                    "@media(max-width:600px)": {
+                    "@media(max-width:1200px)": {
                       flexDirection: "column",
+                      width: "35%",
+                      margin: ".7rem",
+                    },
+                    "@media(max-width:600px)": {
+                      margin:"1rem 1.5rem",
                       width: "100%",
                     },
                   }}
