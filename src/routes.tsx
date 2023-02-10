@@ -1,6 +1,6 @@
+//components
 import Store from "./Components/Store";
 import Countery from "./Pages/Countery";
-
 export interface IRoutes {
   name: string;
   component: React.FunctionComponent;
@@ -12,19 +12,18 @@ export interface IRoutes {
 const routes: IRoutes[] = [
   {
     name: "countereis",
-    component: Store ,
+    component: Store,
     path: "/",
     _id: 1,
-    authorize: ["user",  "manager"],
+    authorize: ["user", "manager"],
   },
   {
     name: "countery",
-    component: Countery ,
+    component: Countery,
     path: "/:name",
     _id: 2,
     authorize: ["user", "manager"],
   },
-
 ];
 
 export default routes;

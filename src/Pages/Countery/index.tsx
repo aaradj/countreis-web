@@ -1,15 +1,20 @@
-import { useLocation } from "react-router-dom";
 import { useContext } from "react";
+//context
 import { DataContext } from "../../Components/Context/DataContextProvider";
+// react router dom
+import { useLocation } from "react-router-dom";
+// helper functions
 import {
   getLanguage,
   getNativeName,
   getValue,
   getBorders,
-  nameSplited
+  nameSplited,
 } from "../../Components/helper";
+
 const Countery = () => {
   const location = useLocation();
+  //get end point
   const pathname = location.pathname;
   const splitedPath = pathname.split("/");
   const newPath = splitedPath[1];

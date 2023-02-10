@@ -1,122 +1,179 @@
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+//components
+import { ThemeProvider } from "../../Components/Context/DataContextProvider";
 import PageLayout from "../../Components/Layouts/PageLayout";
-import React, { useEffect, useState } from "react";
+//helper
 import { spliter, nameSplited } from "../../Components/helper";
-import { Cards, Container, CTypography, Grid, Header, Image, Img, TextCard } from "./countereis";
-
+//styled components
+import { Grid, Header, Image, Img, TextCard } from "./countereis";
+import styled from "styled-components";
+// mui components
 import {
   FormControl,
   Select,
   Typography,
   MenuItem,
   TextField,
-  Paper
+  Paper,
 } from "@mui/material";
+// icons
 import SearchIcon from "@mui/icons-material/Search";
 interface CountereisProps {
   countereisData: Array<object> | [] | undefined;
 }
-const Coutereis = ({ countereisData }: CountereisProps) => {
+
+const Countereis = ({ countereisData }: CountereisProps) => {
+  //darkmode context
+  const mode = useContext(ThemeProvider);
+  const { darkMode } = mode;
+  //state data
   const [data, setData] = useState(countereisData);
+  // state region
   const [Stateregion, setRegion] = useState("Asia");
-  const [search, setSearch] = useState<string | number>("");
+  // select option changer
   const changeHandler = (event: React.ChangeEvent<any>) => {
     setRegion(event.target.value);
   };
-  const inputChange = (evnet: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(evnet.target.value);
-  };
-  const handleSearch = (name: any) => {
-    if (typeof name === "string") {
-      const newName = name.toLowerCase();
-      return newName;
-    }
-  };
 
-  useEffect(() => {
-    setSearch("");
-  }, [Stateregion]);
-
+  // themes
+  const lightColor = "hsl(200, 15%, 8%)";
+  const darkColor = "hsl(0, 0%, 98%)";
+  const DarkElement = "hsl(209, 23%, 22%)";
+  const DarkBackground = "hsl(207, 26%, 17%)";
+  const Container = styled.div`
+    width: 100%;
+    height: fit-content;
+    background: ${darkMode ? DarkBackground : darkColor};
+  `;
   return (
     <PageLayout>
       <Container>
         <Header>
-        <TextField
-          value={search}
-          onChange={inputChange}
-          size="small"
-          name="search"
-          label={<SearchIcon />}
-          placeholder="search for a countery"
-          sx={{
-            outline: "none",
-            boxShadow: "3px 3px 3px 0 rgba(0,0,0, .2)",
-            background: "white",
-            width:"25rem"
-          }}
-        />
-        <FormControl
-          sx={{
-            m: 1,
-            minWidth: 200,
-            outline: "none",
-            boxShadow: "3px 3px 3px 0 rgba(0,0,0, .2)",
-            background: "white",
-          }}
-        >
-          <Select
+          <TextField
             size="small"
-            value={Stateregion}
-            onChange={(event: any) => changeHandler(event)}
+            name="search"
+            label={<SearchIcon sx={{ color: darkMode && darkColor }} />}
+            sx={{
+              outline: "none",
+              boxShadow: "3px 3px 3px 0 rgba(0,0,0, .2)",
+              background: darkMode ? DarkElement : "white",
+              width: "25rem",
+              borderRadius: "5px",
+              "@media(max-width:600px)": {
+                width: "100%",
+              },
+            }}
+          />
+          <FormControl
+            sx={{
+              m: 1,
+              minWidth: 200,
+              outline: "none",
+              boxShadow: "3px 3px 3px 0 rgba(0,0,0, .2)",
+              background: darkMode ? DarkElement : "white",
+              borderRadius: "10px",
+            }}
           >
-            <MenuItem value="Asia">Asia</MenuItem>
-            <MenuItem value="Europe">Europe</MenuItem>
-            <MenuItem value="Americas">Americas</MenuItem>
-            <MenuItem value="Africa">Africa</MenuItem>
-            <MenuItem value="Oceania">Oceania</MenuItem>
-          </Select>
-        </FormControl>
+            <Select
+              size="small"
+              value={Stateregion}
+              onChange={(event: any) => changeHandler(event)}
+              sx={{ color: darkMode ? darkColor : lightColor }}
+            >
+              <MenuItem value="Asia">Asia</MenuItem>
+              <MenuItem value="Europe">Europe</MenuItem>
+              <MenuItem value="Americas">Americas</MenuItem>
+              <MenuItem value="Africa">Africa</MenuItem>
+              <MenuItem value="Oceania">Oceania</MenuItem>
+            </Select>
+          </FormControl>
         </Header>
         <Grid>
-        {data?.map((item: any, length) => {
-          const { name, region, population, flags, capital }: any = item;
-          if (Stateregion === region && search === "") {
-            return (
-              <Paper sx={Cards}>
-              <div key={length}>
-                <Image>
-                <Img src={flags.png} alt={`${name.common} flag`} />
-                </Image>
-                <TextCard>
-                <Link to={`/${nameSplited(name.common)}`}><Typography variant="h5" fontWeight={"bold"}>{name.common}</Typography></Link>
-                <Typography sx={CTypography} variant="subtitle1" display={"flex"}><Typography variant="subtitle1" fontWeight={"bold"} >Population: </Typography> {spliter(population)}</Typography>
-                <Typography sx={CTypography} variant="subtitle1" display={"flex"}><Typography variant="subtitle1" fontWeight={"bold"}>Region: </Typography> {region}</Typography>
-                <Typography sx={CTypography} variant="subtitle1" display={"flex"}> <Typography variant="subtitle1" fontWeight={"bold"}>Capital: </Typography> {capital}</Typography>
-                </TextCard>
-              </div>
+          {data?.map((item: any, length) => {
+            const { name, region, population, flags, capital }: any = item;
+            if (Stateregion === region) {
+              return (
+                <Paper
+                  key={length}
+                  sx={{
+                    background: darkMode ? "hsl(209, 23%, 22%)" : "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "25%",
+                    height: "25rem",
+                    margin: "1.5rem",
+                    overflow: "hidden",
+                    borderRadius: "5px",
+                    "@media(max-width:600px)": {
+                      flexDirection: "column",
+                      width: "100%",
+                    },
+                  }}
+                >
+                  <div key={length}>
+                    <Image>
+                      <Img src={flags.png} alt={`${name.common} flag`} />
+                    </Image>
+                    <TextCard>
+                      <Link to={`/${nameSplited(name.common)}`}>
+                        <Typography
+                          sx={{ color: darkMode ? darkColor : lightColor }}
+                          variant="h5"
+                          fontWeight={"bold"}
+                        >
+                          {name.common}
+                        </Typography>
+                      </Link>
+                      <Typography
+                        sx={{
+                          color: darkMode ? darkColor : lightColor,
+                          margin: ".2rem 0",
+                        }}
+                        variant="subtitle1"
+                        display={"flex"}
+                      >
+                        <Typography variant="subtitle1" fontWeight={"bold"}>
+                          Population:
+                        </Typography>
+                        {spliter(population)}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: darkMode ? darkColor : lightColor,
+                          margin: ".2rem 0",
+                        }}
+                        variant="subtitle1"
+                        display={"flex"}
+                      >
+                        <Typography variant="subtitle1" fontWeight={"bold"}>
+                          Region:
+                        </Typography>
+
+                        {region}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: darkMode ? darkColor : lightColor,
+                          margin: ".2rem 0",
+                        }}
+                        variant="subtitle1"
+                        display={"flex"}
+                      >
+                        <Typography variant="subtitle1" fontWeight={"bold"}>
+                          Capital:
+                        </Typography>
+                        {capital}
+                      </Typography>
+                    </TextCard>
+                  </div>
                 </Paper>
-            );
-          } else if (handleSearch(name.common) === handleSearch(search)) {
-            return (
-              <Paper sx={Cards}>
-              <div key={length}>
-                <Image>
-                <Img src={flags.png} alt={`${name.common} flag`} />
-                </Image>
-                <TextCard>
-                <Link to={`/${nameSplited(name.common)}`}><Typography variant="h5" fontWeight={"bold"}>{name.common}</Typography></Link>
-                <Typography variant="subtitle1">Population: {spliter(population)}</Typography>
-                <p>Region: {region}</p>
-                <p>Capital: {capital}</p>
-                </TextCard>
-              </div>
-                </Paper>
-            );
-          }
-        })}
+              );
+            }
+          })}
         </Grid>
       </Container>
     </PageLayout>
   );
 };
-export default Coutereis;
+export default Countereis;
