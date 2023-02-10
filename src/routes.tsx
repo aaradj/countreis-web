@@ -20,7 +20,7 @@ const routes: IRoutes[] = [
   {
     name: "countery",
     component: Countery ,
-    path: "/countery/:name",
+    path: "/:name",
     _id: 2,
     authorize: ["user", "manager"],
   },

@@ -42,5 +42,10 @@ const getLanguage = (languages: any): Array<string> => {
 const getBorders = (border:any):Array<string> =>{
   return border;
 }
+const nameSplited = (name:string) => {
+  const splitedName = name.split(" ");
+  const newName = splitedName.join("");
+  return newName;
+}
 
-export { spliter, getLanguage, getNativeName, getValue , getBorders };
+export { spliter, getLanguage, getNativeName, getValue , getBorders, nameSplited };

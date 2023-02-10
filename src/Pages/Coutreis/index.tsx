@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 
 import { useEffect, useState } from "react";
-import { spliter } from "../../Components/helper";
+import { spliter, nameSplited } from "../../Components/helper";
 interface CountereisProps {
   countereisData: Array<object> | [] | undefined;
 }
 const Coutereis = ({ countereisData }: CountereisProps) => {
   const [data, setData] = useState(countereisData);
-  const [Stateregion, setRegion] = useState("Europe");
+  const [Stateregion, setRegion] = useState("Asia");
   const [search, setSearch] = useState<string | number>("");
-
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setRegion(event.target.value);
   };
@@ -22,6 +21,7 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
       return newName;
     }
   };
+
   useEffect(() => {
     setSearch("");
   }, [Stateregion]);
@@ -45,7 +45,7 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
               <p>Population: {spliter(population)}</p>
               <p>Region: {region}</p>
               <p>Capital: {capital}</p>
-              <Link to={`/countery/${name.common}`}>detials</Link>
+              <Link to={`/${nameSplited(name.common)}`}>detials</Link>
             </div>
           );
         } else if (handleSearch(name.common) === handleSearch(search)) {
@@ -56,6 +56,7 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
               <p>Population: {spliter(population)}</p>
               <p>Region: {region}</p>
               <p>Capital: {capital}</p>
+              <Link to={`/${nameSplited(name.common)}`}>detials</Link>
             </div>
           );
         }

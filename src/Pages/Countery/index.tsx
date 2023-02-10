@@ -6,12 +6,13 @@ import {
   getNativeName,
   getValue,
   getBorders,
+  nameSplited
 } from "../../Components/helper";
 const Countery = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const splitedPath = pathname.split("/");
-  const newPath = splitedPath[2];
+  const newPath = splitedPath[1];
   const data = useContext(DataContext);
   return (
     <div>
@@ -28,7 +29,7 @@ const Countery = () => {
           tld,
           borders,
         }: any = item;
-        if (name.common === newPath) {
+        if (nameSplited(name.common) === newPath) {
           return (
             <div key={name.common}>
               <h1>{name.common}</h1>
