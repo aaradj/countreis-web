@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import { spliter } from "../../Components/helper";
 interface CountereisProps {
@@ -20,11 +22,9 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
       return newName;
     }
   };
-
   useEffect(() => {
     setSearch("");
   }, [Stateregion]);
-
   return (
     <div>
       <input type="text" value={search} onChange={inputChange} />
@@ -37,6 +37,7 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
       </select>
       {data?.map((item: any, length) => {
         const { name, region, population, flags, capital }: any = item;
+        console.log(name.common);
         if (Stateregion === region && search === "") {
           return (
             <div key={length}>
@@ -45,6 +46,7 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
               <p>Population: {spliter(population)}</p>
               <p>Region: {region}</p>
               <p>Capital: {capital}</p>
+              <Link to={`/countery/${name.common}`}>detials</Link>
             </div>
           );
         } else if (handleSearch(name.common) === handleSearch(search)) {
@@ -62,5 +64,4 @@ const Coutereis = ({ countereisData }: CountereisProps) => {
     </div>
   );
 };
-
 export default Coutereis;
