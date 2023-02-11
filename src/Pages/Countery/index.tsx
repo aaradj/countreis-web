@@ -43,7 +43,7 @@ const Countery = () => {
   const Container = styled.div`
     width: 100%;
     height: 100vh;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     background: ${darkMode ? DarkBackground : darkColor};
     @media (max-height: 850px) {
       height: fit-content;
