@@ -17,6 +17,7 @@ const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 2.5rem 1rem;
   width: 100%;
   height: 100%;
   padding: 2rem;
@@ -36,4 +37,5 @@ const TextCard = styled.div`
   flex-direction: column;
   padding: 1rem;
 `;
+
 export { Header, Grid, Img, Image, TextCard };

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 //components
 import { ThemeProvider } from "../../Components/Context/DataContextProvider";
@@ -52,7 +52,8 @@ const Countereis = ({ countereisData }: CountereisProps) => {
         <Header>
           <TextField
             size="small"
-            name="search"
+            name="counterySearch"
+            type="search"
             label={<SearchIcon sx={{ color: darkMode && darkColor }} />}
             sx={{
               outline: "none",
@@ -102,16 +103,13 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                     flexDirection: "column",
                     width: "20%",
                     height: "25rem",
-                    margin: "1.5rem",
                     overflow: "hidden",
                     borderRadius: "5px",
                     "@media(max-width:1200px)": {
-                      flexDirection: "column",
                       width: "35%",
                       margin: ".7rem",
                     },
                     "@media(max-width:600px)": {
-                      margin:"1rem 1.5rem",
                       width: "100%",
                     },
                   }}
