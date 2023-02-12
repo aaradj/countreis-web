@@ -109,7 +109,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                       display: "flex",
                       flexDirection: "column",
                       width: "20%",
-                      height: "25rem",
+                      height: "23rem",
                       overflow: "hidden",
                       borderRadius: "10px",
                       "@media(max-width:1200px)": {
@@ -129,7 +129,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                         <TextCard>
                           <Typography
                             sx={{ color: darkMode ? darkColor : lightColor }}
-                            variant="h5"
+                            variant="h6"
                             fontWeight={"bold"}
                           >
                             {name.common}
@@ -137,12 +137,15 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                           <Typography
                             sx={{
                               color: darkMode ? darkColor : lightColor,
-                              margin: ".2rem 0",
                             }}
-                            variant="subtitle1"
+                            variant="subtitle2"
                             display={"flex"}
                           >
-                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                            <Typography
+                              variant="subtitle2"
+                              margin={"0 .3rem .3rem 0"}
+                              fontWeight={"bold"}
+                            >
                               Population:
                             </Typography>
                             {spliter(population)}
@@ -150,26 +153,31 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                           <Typography
                             sx={{
                               color: darkMode ? darkColor : lightColor,
-                              margin: ".2rem 0",
                             }}
-                            variant="subtitle1"
+                            variant="subtitle2"
                             display={"flex"}
                           >
-                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                            <Typography
+                              variant="subtitle2"
+                              margin={"0 .3rem .3rem 0"}
+                              fontWeight={"bold"}
+                            >
                               Region:
                             </Typography>
-
                             {region}
                           </Typography>
                           <Typography
                             sx={{
                               color: darkMode ? darkColor : lightColor,
-                              margin: ".2rem 0",
                             }}
-                            variant="subtitle1"
+                            variant="subtitle2"
                             display={"flex"}
                           >
-                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                            <Typography
+                              variant="subtitle2"
+                              margin={"0 .3rem .3rem 0"}
+                              fontWeight={"bold"}
+                            >
                               Capital:
                             </Typography>
                             {capital}
@@ -191,7 +199,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                       display: "flex",
                       flexDirection: "column",
                       width: "20%",
-                      height: "25rem",
+                      height: "23rem",
                       overflow: "hidden",
                       borderRadius: "10px",
                       "@media(max-width:1200px)": {
@@ -211,7 +219,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                         <TextCard>
                           <Typography
                             sx={{ color: darkMode ? darkColor : lightColor }}
-                            variant="h5"
+                            variant="h6"
                             fontWeight={"bold"}
                           >
                             {name.common}
@@ -219,12 +227,15 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                           <Typography
                             sx={{
                               color: darkMode ? darkColor : lightColor,
-                              margin: ".2rem 0",
                             }}
-                            variant="subtitle1"
+                            variant="subtitle2"
                             display={"flex"}
                           >
-                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                            <Typography
+                              variant="subtitle2"
+                              margin={"0 .3rem .3rem 0"}
+                              fontWeight={"bold"}
+                            >
                               Population:
                             </Typography>
                             {spliter(population)}
@@ -232,26 +243,31 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                           <Typography
                             sx={{
                               color: darkMode ? darkColor : lightColor,
-                              margin: ".2rem 0",
                             }}
-                            variant="subtitle1"
+                            variant="subtitle2"
                             display={"flex"}
                           >
-                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                            <Typography
+                              variant="subtitle2"
+                              margin={"0 .3rem .3rem 0"}
+                              fontWeight={"bold"}
+                            >
                               Region:
                             </Typography>
-
                             {region}
                           </Typography>
                           <Typography
                             sx={{
                               color: darkMode ? darkColor : lightColor,
-                              margin: ".2rem 0",
                             }}
-                            variant="subtitle1"
+                            variant="subtitle2"
                             display={"flex"}
                           >
-                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                            <Typography
+                              variant="subtitle2"
+                              margin={"0 .3rem .3rem 0"}
+                              fontWeight={"bold"}
+                            >
                               Capital:
                             </Typography>
                             {capital}
