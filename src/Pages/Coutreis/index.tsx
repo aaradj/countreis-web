@@ -109,86 +109,171 @@ const Countereis = ({ countereisData }: CountereisProps) => {
         <Grid>
           {data?.map((item: any, length) => {
             const { name, region, population, flags, capital }: any = item;
-            if (Stateregion === region) {
-              return (
-                <Paper
-                  elevation={10}
-                  key={length}
-                  sx={{
-                    background: darkMode ? "hsl(209, 23%, 22%)" : "white",
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "20%",
-                    height: "25rem",
-                    overflow: "hidden",
-                    borderRadius: "10px",
-                    "@media(max-width:1200px)": {
-                      width: "35%",
-                      margin: ".7rem",
-                    },
-                    "@media(max-width:600px)": {
-                      width: "100%",
-                    },
-                  }}
-                >
-                  <div key={length}>
-                    <Link to={`/${nameSplited(name.common)}`}>
-                      <Image>
-                        <Img src={flags.png} alt={`${name.common} flag`} />
-                      </Image>
-                      <TextCard>
-                        <Typography
-                          sx={{ color: darkMode ? darkColor : lightColor }}
-                          variant="h5"
-                          fontWeight={"bold"}
-                        >
-                          {name.common}
-                        </Typography>
-                        <Typography
-                          sx={{
-                            color: darkMode ? darkColor : lightColor,
-                            margin: ".2rem 0",
-                          }}
-                          variant="subtitle1"
-                          display={"flex"}
-                        >
-                          <Typography variant="subtitle1" fontWeight={"bold"}>
-                            Population:
+            // for times when local storage is empty
+            if (!Stateregion) {
+              if (region === "Asia") {
+                return (
+                  <Paper
+                    elevation={10}
+                    key={length}
+                    sx={{
+                      background: darkMode ? "hsl(209, 23%, 22%)" : "white",
+                      display: "flex",
+                      flexDirection: "column",
+                      width: "20%",
+                      height: "25rem",
+                      overflow: "hidden",
+                      borderRadius: "10px",
+                      "@media(max-width:1200px)": {
+                        width: "35%",
+                        margin: ".7rem",
+                      },
+                      "@media(max-width:600px)": {
+                        width: "100%",
+                      },
+                    }}
+                  >
+                    <div key={length}>
+                      <Link to={`/${nameSplited(name.common)}`}>
+                        <Image>
+                          <Img src={flags.png} alt={`${name.common} flag`} />
+                        </Image>
+                        <TextCard>
+                          <Typography
+                            sx={{ color: darkMode ? darkColor : lightColor }}
+                            variant="h5"
+                            fontWeight={"bold"}
+                          >
+                            {name.common}
                           </Typography>
-                          {spliter(population)}
-                        </Typography>
-                        <Typography
-                          sx={{
-                            color: darkMode ? darkColor : lightColor,
-                            margin: ".2rem 0",
-                          }}
-                          variant="subtitle1"
-                          display={"flex"}
-                        >
-                          <Typography variant="subtitle1" fontWeight={"bold"}>
-                            Region:
+                          <Typography
+                            sx={{
+                              color: darkMode ? darkColor : lightColor,
+                              margin: ".2rem 0",
+                            }}
+                            variant="subtitle1"
+                            display={"flex"}
+                          >
+                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                              Population:
+                            </Typography>
+                            {spliter(population)}
                           </Typography>
+                          <Typography
+                            sx={{
+                              color: darkMode ? darkColor : lightColor,
+                              margin: ".2rem 0",
+                            }}
+                            variant="subtitle1"
+                            display={"flex"}
+                          >
+                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                              Region:
+                            </Typography>
 
-                          {region}
-                        </Typography>
-                        <Typography
-                          sx={{
-                            color: darkMode ? darkColor : lightColor,
-                            margin: ".2rem 0",
-                          }}
-                          variant="subtitle1"
-                          display={"flex"}
-                        >
-                          <Typography variant="subtitle1" fontWeight={"bold"}>
-                            Capital:
+                            {region}
                           </Typography>
-                          {capital}
-                        </Typography>
-                      </TextCard>
-                    </Link>
-                  </div>
-                </Paper>
-              );
+                          <Typography
+                            sx={{
+                              color: darkMode ? darkColor : lightColor,
+                              margin: ".2rem 0",
+                            }}
+                            variant="subtitle1"
+                            display={"flex"}
+                          >
+                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                              Capital:
+                            </Typography>
+                            {capital}
+                          </Typography>
+                        </TextCard>
+                      </Link>
+                    </div>
+                  </Paper>
+                );
+              }
+            } else {
+              if (Stateregion === region) {
+                return (
+                  <Paper
+                    elevation={10}
+                    key={length}
+                    sx={{
+                      background: darkMode ? "hsl(209, 23%, 22%)" : "white",
+                      display: "flex",
+                      flexDirection: "column",
+                      width: "20%",
+                      height: "25rem",
+                      overflow: "hidden",
+                      borderRadius: "10px",
+                      "@media(max-width:1200px)": {
+                        width: "35%",
+                        margin: ".7rem",
+                      },
+                      "@media(max-width:600px)": {
+                        width: "100%",
+                      },
+                    }}
+                  >
+                    <div key={length}>
+                      <Link to={`/${nameSplited(name.common)}`}>
+                        <Image>
+                          <Img src={flags.png} alt={`${name.common} flag`} />
+                        </Image>
+                        <TextCard>
+                          <Typography
+                            sx={{ color: darkMode ? darkColor : lightColor }}
+                            variant="h5"
+                            fontWeight={"bold"}
+                          >
+                            {name.common}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              color: darkMode ? darkColor : lightColor,
+                              margin: ".2rem 0",
+                            }}
+                            variant="subtitle1"
+                            display={"flex"}
+                          >
+                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                              Population:
+                            </Typography>
+                            {spliter(population)}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              color: darkMode ? darkColor : lightColor,
+                              margin: ".2rem 0",
+                            }}
+                            variant="subtitle1"
+                            display={"flex"}
+                          >
+                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                              Region:
+                            </Typography>
+
+                            {region}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              color: darkMode ? darkColor : lightColor,
+                              margin: ".2rem 0",
+                            }}
+                            variant="subtitle1"
+                            display={"flex"}
+                          >
+                            <Typography variant="subtitle1" fontWeight={"bold"}>
+                              Capital:
+                            </Typography>
+                            {capital}
+                          </Typography>
+                        </TextCard>
+                      </Link>
+                    </div>
+                  </Paper>
+                );
+              }
             }
           })}
         </Grid>
