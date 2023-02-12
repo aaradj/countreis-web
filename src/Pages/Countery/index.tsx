@@ -53,12 +53,13 @@ const Countery = () => {
 
   const Box = styled.div`
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-top:5rem;
     padding: 2rem 4rem;
     @media (max-width: 1200px) {
+      margin:0;
       flex-direction: column;
       gap: 1rem;
       padding: 1rem 2rem;
@@ -201,7 +202,7 @@ const Countery = () => {
                       </Typography>
                       {getBorders(borders).map(
                         (item: string, length: number) => {
-                          if (length > 0) {
+                          if (length >= 0) {
                             const newItem = `${item} `;
                             return (
                               <div key={length}>

@@ -4,7 +4,7 @@ import { ThemeProvider } from "../Context/DataContextProvider";
 // mui comopnents
 import { Box, Toolbar, Typography, Button, AppBar } from "@mui/material";
 // icons
-import NightlightIcon from "@mui/icons-material/Nightlight";
+import NightlightRoundOutlinedIcon from '@mui/icons-material/NightlightRoundOutlined';
 // styled components
 import { Header } from "./navbar";
 
@@ -48,7 +48,7 @@ const Navbar = () => {
               color="inherit"
               sx={{ display: "flex", alignItems: "center" }}
             >
-              <NightlightIcon
+              <NightlightRoundOutlinedIcon
                 fontSize="large"
                 sx={{ "@media(max-width:600px)": { fontSize: "medium" } }}
               />
