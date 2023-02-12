@@ -44,7 +44,7 @@ const Countery = () => {
   const Container = styled.div`
     width: 100%;
     height: 100vh;
-    padding-bottom: 3rem;
+    margin-bottom: 4rem;
     background: ${darkMode ? DarkBackground : darkColor};
     @media (max-height: 850px) {
       height: fit-content;
@@ -204,9 +204,8 @@ const Countery = () => {
                           if (length > 0) {
                             const newItem = `${item} `;
                             return (
-                              <div>
+                              <div key={length}>
                                 <Button
-                                  key={length}
                                   sx={{
                                     background: darkMode
                                       ? DarkElement

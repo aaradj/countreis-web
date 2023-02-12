@@ -30,11 +30,26 @@ const Countereis = ({ countereisData }: CountereisProps) => {
   //state data
   const [data, setData] = useState(countereisData);
   // state region
-  const [Stateregion, setRegion] = useState("Asia");
+  const [Stateregion, setRegion] = useState<string | null>(
+    localStorage.getItem("region")
+  );
   // select option changer
-  const changeHandler = (event: React.ChangeEvent<any>) => {
-    setRegion(event.target.value);
+
+  const changeHandler = (event: React.ChangeEvent<HTMLSelectElement>): any => {
+    event.preventDefault();
+    localStorage.setItem("region", event.target.value);
+    setRegion(localStorage.getItem("region"));
   };
+
+  useEffect(() => {
+    const LocalSetter = (region: string) => {
+      localStorage.clear();
+      localStorage.setItem("region", region);
+    };
+    if (localStorage.getItem("region")) {
+      setRegion(localStorage.getItem("region"));
+    }
+  }, [Stateregion]);
 
   // themes
   const lightColor = "hsl(200, 15%, 8%)";
@@ -117,11 +132,11 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                   }}
                 >
                   <div key={length}>
-                      <Link to={`/${nameSplited(name.common)}`}>
-                    <Image>
-                      <Img src={flags.png} alt={`${name.common} flag`} />
-                    </Image>
-                    <TextCard>
+                    <Link to={`/${nameSplited(name.common)}`}>
+                      <Image>
+                        <Img src={flags.png} alt={`${name.common} flag`} />
+                      </Image>
+                      <TextCard>
                         <Typography
                           sx={{ color: darkMode ? darkColor : lightColor }}
                           variant="h5"
@@ -129,48 +144,48 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                         >
                           {name.common}
                         </Typography>
-                      <Typography
-                        sx={{
-                          color: darkMode ? darkColor : lightColor,
-                          margin: ".2rem 0",
-                        }}
-                        variant="subtitle1"
-                        display={"flex"}
+                        <Typography
+                          sx={{
+                            color: darkMode ? darkColor : lightColor,
+                            margin: ".2rem 0",
+                          }}
+                          variant="subtitle1"
+                          display={"flex"}
                         >
-                        <Typography variant="subtitle1" fontWeight={"bold"}>
-                          Population:
+                          <Typography variant="subtitle1" fontWeight={"bold"}>
+                            Population:
+                          </Typography>
+                          {spliter(population)}
                         </Typography>
-                        {spliter(population)}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: darkMode ? darkColor : lightColor,
-                          margin: ".2rem 0",
-                        }}
-                        variant="subtitle1"
-                        display={"flex"}
+                        <Typography
+                          sx={{
+                            color: darkMode ? darkColor : lightColor,
+                            margin: ".2rem 0",
+                          }}
+                          variant="subtitle1"
+                          display={"flex"}
                         >
-                        <Typography variant="subtitle1" fontWeight={"bold"}>
-                          Region:
-                        </Typography>
+                          <Typography variant="subtitle1" fontWeight={"bold"}>
+                            Region:
+                          </Typography>
 
-                        {region}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: darkMode ? darkColor : lightColor,
-                          margin: ".2rem 0",
-                        }}
-                        variant="subtitle1"
-                        display={"flex"}
-                        >
-                        <Typography variant="subtitle1" fontWeight={"bold"}>
-                          Capital:
+                          {region}
                         </Typography>
-                        {capital}
-                      </Typography>
-                    </TextCard>
-                        </Link>
+                        <Typography
+                          sx={{
+                            color: darkMode ? darkColor : lightColor,
+                            margin: ".2rem 0",
+                          }}
+                          variant="subtitle1"
+                          display={"flex"}
+                        >
+                          <Typography variant="subtitle1" fontWeight={"bold"}>
+                            Capital:
+                          </Typography>
+                          {capital}
+                        </Typography>
+                      </TextCard>
+                    </Link>
                   </div>
                 </Paper>
               );
