@@ -1,13 +1,18 @@
 import { useContext } from "react";
 //context
+
 import {
   DataContext,
   ThemeProvider,
 } from "../../Components/Context/DataContextProvider";
+
 // react router dom
 import { useLocation, useNavigate } from "react-router-dom";
+
 // styled components
 import styled from "styled-components";
+import { Box, Div, FooterText, RowText, TitleText } from "./coutery";
+
 // helper functions
 import {
   getLanguage,
@@ -16,31 +21,38 @@ import {
   getBorders,
   nameSplited,
   spliter,
+  getEndPoint,
 } from "../../Components/helper";
+
 //mui components
 import { Button, Typography } from "@mui/material";
+
 // icons
 import WestIcon from "@mui/icons-material/West";
+
 // Layout
 import PageLayout from "../../Components/Layouts/PageLayout";
+
+//themes
+import {
+  darkColor,
+  DarkBackground,
+  DarkElement,
+  lightColor,
+} from "../../Components/Theme/theme";
 
 const Countery = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   //get end point
-  const pathname = location.pathname;
-  const splitedPath = pathname.split("/");
-  const newPath = splitedPath[1];
+  const pathName = getEndPoint(location.pathname);
+
   const data = useContext(DataContext);
   const mode = useContext(ThemeProvider);
   const { darkMode } = mode;
-  //themes
-  const darkColor = "hsl(0, 0%, 98%)";
-  const DarkElement = "hsl(209, 23%, 22%)";
-  const DarkBackground = "hsl(207, 26%, 17%)";
 
   //styled
-
   const Container = styled.div`
     width: 100%;
     height: 100vh;
@@ -51,41 +63,6 @@ const Countery = () => {
     }
   `;
 
-  const Box = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 5rem;
-    padding: 2rem 4rem;
-    @media (max-width: 1200px) {
-      margin: 0;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem 2rem;
-    }
-  `;
-
-  const Div = styled.div`
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    img {
-      width: 80%;
-      height: 100%;
-      border-radius: 10px;
-      box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.3);
-    }
-    @media (max-width: 1200px) {
-      width: 100%;
-      gap: 2rem;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  `;
   const Texts = styled.div`
     width: 50%;
     height: 100%;
@@ -97,36 +74,6 @@ const Countery = () => {
       width: 100%;
       gap: 1rem;
     }
-  `;
-
-  const TitleText = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-wrap: wrap;
-    @media (max-width: 1200px) {
-      flex-direction: column;
-      gap: 2rem;
-    }
-  `;
-
-  const RowText = styled.div`
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: start;
-    @media(max-width:1200px){
-      width:100%;
-  `;
-
-  const FooterText = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
   `;
 
   return (
@@ -144,7 +91,9 @@ const Countery = () => {
           tld,
           borders,
         }: any = item;
-        if (nameSplited(name.common) === newPath) {
+
+        //To determine which country profile should be shown
+        if (nameSplited(name.common) === pathName) {
           return (
             <PageLayout>
               <Box key={name.common}>
@@ -163,6 +112,7 @@ const Countery = () => {
                   </Button>
                   <img src={flags.png} alt={name} />
                 </Div>
+
                 <Texts>
                   <TitleText>
                     <RowText>
@@ -175,33 +125,39 @@ const Countery = () => {
                       <Typography>Sub Region: {subregion}</Typography>
                       <Typography>Capital: {capital}</Typography>
                     </RowText>
+
                     <RowText>
                       <Typography>Top Level Domain: {tld}</Typography>
                       <Typography>
                         Currencies: {getValue(currencies)}
                       </Typography>
+
                       <Typography>
                         Languages:
                         {getLanguage(languages).map(
                           (item: string, length: number) => {
+                            //if they have more than one language, separate them with a comma
                             if (length > 0) {
-                              const newItem = `,${item} `;
+                              const newItem = ` , ${item} `;
                               return newItem;
                             } else {
-                              return item;
+                              return ` ${item}`;
                             }
                           }
                         )}
                       </Typography>
                     </RowText>
                   </TitleText>
+
                   {borders && (
                     <FooterText>
                       <Typography variant="h6" fontWeight={"bold"}>
                         Borders:
                       </Typography>
+
                       {getBorders(borders).map(
                         (item: string, length: number) => {
+                          //if we have a border? return borders name, else return nothing
                           if (length >= 0) {
                             const newItem = `${item} `;
                             return (

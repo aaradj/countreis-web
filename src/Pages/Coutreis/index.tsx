@@ -1,35 +1,42 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-//components
+
+//Contexts
 import { ThemeProvider } from "../../Components/Context/DataContextProvider";
+
 import PageLayout from "../../Components/Layouts/PageLayout";
-//helper
-import { spliter, nameSplited } from "../../Components/helper";
+
 //styled components
-import { Grid, Header, Image, Img, TextCard } from "./countereis";
+import { Grid, Header } from "./countereis";
 import styled from "styled-components";
+
 // mui components
-import {
-  FormControl,
-  Select,
-  Typography,
-  MenuItem,
-  TextField,
-  Paper,
-  OutlinedInput,
-} from "@mui/material";
+import { FormControl, Select, MenuItem, TextField } from "@mui/material";
+
 // icons
 import SearchIcon from "@mui/icons-material/Search";
+import CouteryBox from "../../Components/CouteryBox";
+
+//themes
+import {
+  darkColor,
+  DarkBackground,
+  DarkElement,
+  lightColor,
+} from "../../Components/Theme/theme";
+
 interface CountereisProps {
   countereisData: Array<object> | [] | undefined;
 }
 
 const Countereis = ({ countereisData }: CountereisProps) => {
+
   //darkmode context
   const mode = useContext(ThemeProvider);
   const { darkMode } = mode;
+
   //state data
   const [data, setData] = useState(countereisData);
+
   // state region
   const [Stateregion, setRegion] = useState<string | null>(
     localStorage.getItem("region")
@@ -39,20 +46,20 @@ const Countereis = ({ countereisData }: CountereisProps) => {
     localStorage.setItem("region", event.target.value);
     setRegion(localStorage.getItem("region"));
   };
-  // themes
-  const lightColor = "hsl(200, 15%, 8%)";
-  const darkColor = "hsl(0, 0%, 98%)";
-  const DarkElement = "hsl(209, 23%, 22%)";
-  const DarkBackground = "hsl(207, 26%, 17%)";
+
   const Container = styled.div`
     width: 100%;
     height: fit-content;
     background: ${darkMode ? DarkBackground : darkColor};
   `;
+
   return (
     <Container>
+
       <PageLayout>
+
         <Header>
+
           <TextField
             size="medium"
             name="counterySearch"
@@ -70,6 +77,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
               },
             }}
           />
+
           <FormControl
             sx={{
               m: 1,
@@ -93,199 +101,29 @@ const Countereis = ({ countereisData }: CountereisProps) => {
               <MenuItem value="Oceania">Oceania</MenuItem>
             </Select>
           </FormControl>
+
         </Header>
+
+
         <Grid>
           {data?.map((item: any, length) => {
-            const { name, region, population, flags, capital }: any = item;
             // for times when local storage is empty
             if (!Stateregion) {
-              if (region === "Asia") {
-                return (
-                  <Paper
-                    elevation={3}
-                    key={length}
-                    sx={{
-                      background: darkMode ? "hsl(209, 23%, 22%)" : "white",
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "20%",
-                      height: "22rem",
-                      overflow: "hidden",
-                      borderRadius: "10px",
-                      "@media(max-width:1200px)": {
-                        width: "35%",
-                        margin: ".7rem",
-                      },
-                      "@media(max-width:600px)": {
-                        width: "100%",
-                      },
-                    }}
-                  >
-                    <div key={length}>
-                      <Link to={`/${nameSplited(name.common)}`}>
-                        <Image>
-                          <Img src={flags.png} alt={`${name.common} flag`} />
-                        </Image>
-                        <TextCard>
-                          <Typography
-                            sx={{ color: darkMode ? darkColor : lightColor }}
-                            variant="h6"
-                            fontWeight={"bold"}
-                            margin="0 0 1rem"
-                          >
-                            {name.common}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              color: darkMode ? darkColor : lightColor,
-                            }}
-                            variant="subtitle2"
-                            display={"flex"}
-                          >
-                            <Typography
-                              variant="subtitle2"
-                              margin={"0 .3rem .3rem 0"}
-                              fontWeight={"bold"}
-                            >
-                              Population:
-                            </Typography>
-                            {spliter(population)}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              color: darkMode ? darkColor : lightColor,
-                            }}
-                            variant="subtitle2"
-                            display={"flex"}
-                          >
-                            <Typography
-                              variant="subtitle2"
-                              margin={"0 .3rem .3rem 0"}
-                              fontWeight={"bold"}
-                            >
-                              Region:
-                            </Typography>
-                            {region}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              color: darkMode ? darkColor : lightColor,
-                            }}
-                            variant="subtitle2"
-                            display={"flex"}
-                          >
-                            <Typography
-                              variant="subtitle2"
-                              margin={"0 .3rem .3rem 0"}
-                              fontWeight={"bold"}
-                            >
-                              Capital:
-                            </Typography>
-                            {capital}
-                          </Typography>
-                        </TextCard>
-                      </Link>
-                    </div>
-                  </Paper>
-                );
+              if (item.region === "Asia") {
+                return <CouteryBox key={length} item={item} />;
               }
             } else {
-              if (Stateregion === region) {
-                return (
-                  <Paper
-                    elevation={3}
-                    key={length}
-                    sx={{
-                      background: darkMode ? "hsl(209, 23%, 22%)" : "white",
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "20%",
-                      height: "22rem",
-                      overflow: "hidden",
-
-                      borderRadius: "10px",
-                      "@media(max-width:1200px)": {
-                        width: "35%",
-                        margin: ".7rem",
-                      },
-                      "@media(max-width:600px)": {
-                        width: "100%",
-                      },
-                    }}
-                  >
-                    <div key={length}>
-                      <Link to={`/${nameSplited(name.common)}`}>
-                        <Image>
-                          <Img src={flags.png} alt={`${name.common} flag`} />
-                        </Image>
-                        <TextCard>
-                          <Typography
-                            sx={{ color: darkMode ? darkColor : lightColor }}
-                            variant="h6"
-                            fontWeight={"bold"}
-                            margin="0 0 1rem"
-                          >
-                            {name.common}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              color: darkMode ? darkColor : lightColor,
-                            }}
-                            variant="subtitle2"
-                            display={"flex"}
-                          >
-                            <Typography
-                              variant="subtitle2"
-                              margin={"0 .3rem .3rem 0"}
-                              fontWeight={"bold"}
-                            >
-                              Population:
-                            </Typography>
-                            {spliter(population)}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              color: darkMode ? darkColor : lightColor,
-                            }}
-                            variant="subtitle2"
-                            display={"flex"}
-                          >
-                            <Typography
-                              variant="subtitle2"
-                              margin={"0 .3rem .3rem 0"}
-                              fontWeight={"bold"}
-                            >
-                              Region:
-                            </Typography>
-                            {region}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              color: darkMode ? darkColor : lightColor,
-                            }}
-                            variant="subtitle2"
-                            display={"flex"}
-                          >
-                            <Typography
-                              variant="subtitle2"
-                              margin={"0 .3rem .3rem 0"}
-                              fontWeight={"bold"}
-                            >
-                              Capital:
-                            </Typography>
-                            {capital}
-                          </Typography>
-                        </TextCard>
-                      </Link>
-                    </div>
-                  </Paper>
-                );
+              if (Stateregion === item.region) {
+                return <CouteryBox key={length} item={item} />;
               }
             }
           })}
         </Grid>
+
       </PageLayout>
+
     </Container>
   );
 };
+
 export default Countereis;

@@ -59,6 +59,13 @@ const nameSplited = (name: string) => {
   return newName;
 };
 
+const getEndPoint = (location:string) => {
+  const pathname = location;
+  const splitedPath = pathname.split("/");
+  const newPath = splitedPath[1];
+  return newPath;
+}
+
 export {
   spliter,
   getLanguage,
@@ -66,4 +73,5 @@ export {
   getValue,
   getBorders,
   nameSplited,
+  getEndPoint
 };
