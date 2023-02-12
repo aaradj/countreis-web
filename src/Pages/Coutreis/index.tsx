@@ -102,7 +102,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
               if (region === "Asia") {
                 return (
                   <Paper
-                    elevation={10}
+                  elevation={3}
                     key={length}
                     sx={{
                       background: darkMode ? "hsl(209, 23%, 22%)" : "white",
@@ -192,7 +192,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
               if (Stateregion === region) {
                 return (
                   <Paper
-                    elevation={10}
+                  elevation={3}
                     key={length}
                     sx={{
                       background: darkMode ? "hsl(209, 23%, 22%)" : "white",
