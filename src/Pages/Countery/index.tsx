@@ -15,6 +15,7 @@ import {
   getValue,
   getBorders,
   nameSplited,
+  spliter,
 } from "../../Components/helper";
 //mui components
 import { Button, Typography } from "@mui/material";
@@ -72,7 +73,7 @@ const Countery = () => {
     img {
       width: 80%;
       height: 100%;
-      border-radius: 5px;
+      border-radius: 10px;
       box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.3);
     }
     @media (max-width: 1200px) {
@@ -113,7 +114,7 @@ const Countery = () => {
     width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: start;
     @media(max-width:1200px){
       width:100%;
@@ -165,16 +166,20 @@ const Countery = () => {
                   <TitleText>
                     <RowText>
                       <h1>{name.common}</h1>
-                      <p>Native Name: {getNativeName(name.nativeName)}</p>
-                      <p>Population: {population}</p>
-                      <p>Region: {region}</p>
-                      <p>Sub Region: {subregion}</p>
-                      <p>Capital: {capital}</p>
+                      <Typography>
+                        Native Name: {getNativeName(name.nativeName)}
+                      </Typography>
+                      <Typography>Population: {spliter(population)}</Typography>
+                      <Typography>Region: {region}</Typography>
+                      <Typography>Sub Region: {subregion}</Typography>
+                      <Typography>Capital: {capital}</Typography>
                     </RowText>
                     <RowText>
-                      <p>Top Level Domain: {tld}</p>
-                      <p>Currencies: {getValue(currencies)}</p>
-                      <p>
+                      <Typography>Top Level Domain: {tld}</Typography>
+                      <Typography>
+                        Currencies: {getValue(currencies)}
+                      </Typography>
+                      <Typography>
                         Languages:
                         {getLanguage(languages).map(
                           (item: string, length: number) => {
@@ -186,7 +191,7 @@ const Countery = () => {
                             }
                           }
                         )}
-                      </p>
+                      </Typography>
                     </RowText>
                   </TitleText>
                   {borders && (

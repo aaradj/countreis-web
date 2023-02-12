@@ -51,8 +51,9 @@ const Countereis = ({ countereisData }: CountereisProps) => {
       <Container>
         <Header>
           <TextField
-            size="small"
+            size="medium"
             name="counterySearch"
+            placeholder="coutery name"
             type="search"
             label={<SearchIcon sx={{ color: darkMode && darkColor }} />}
             sx={{
@@ -77,7 +78,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
             }}
           >
             <Select
-              size="small"
+              size="medium"
               value={Stateregion}
               onChange={(event: any) => changeHandler(event)}
               sx={{ color: darkMode ? darkColor : lightColor }}
@@ -96,6 +97,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
             if (Stateregion === region) {
               return (
                 <Paper
+                  elevation={10}
                   key={length}
                   sx={{
                     background: darkMode ? "hsl(209, 23%, 22%)" : "white",
@@ -104,7 +106,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                     width: "20%",
                     height: "25rem",
                     overflow: "hidden",
-                    borderRadius: "5px",
+                    borderRadius: "10px",
                     "@media(max-width:1200px)": {
                       width: "35%",
                       margin: ".7rem",
@@ -115,11 +117,11 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                   }}
                 >
                   <div key={length}>
+                      <Link to={`/${nameSplited(name.common)}`}>
                     <Image>
                       <Img src={flags.png} alt={`${name.common} flag`} />
                     </Image>
                     <TextCard>
-                      <Link to={`/${nameSplited(name.common)}`}>
                         <Typography
                           sx={{ color: darkMode ? darkColor : lightColor }}
                           variant="h5"
@@ -127,7 +129,6 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                         >
                           {name.common}
                         </Typography>
-                      </Link>
                       <Typography
                         sx={{
                           color: darkMode ? darkColor : lightColor,
@@ -135,7 +136,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                         }}
                         variant="subtitle1"
                         display={"flex"}
-                      >
+                        >
                         <Typography variant="subtitle1" fontWeight={"bold"}>
                           Population:
                         </Typography>
@@ -148,7 +149,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                         }}
                         variant="subtitle1"
                         display={"flex"}
-                      >
+                        >
                         <Typography variant="subtitle1" fontWeight={"bold"}>
                           Region:
                         </Typography>
@@ -162,13 +163,14 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                         }}
                         variant="subtitle1"
                         display={"flex"}
-                      >
+                        >
                         <Typography variant="subtitle1" fontWeight={"bold"}>
                           Capital:
                         </Typography>
                         {capital}
                       </Typography>
                     </TextCard>
+                        </Link>
                   </div>
                 </Paper>
               );
