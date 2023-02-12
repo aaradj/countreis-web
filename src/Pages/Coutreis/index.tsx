@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 //components
 import { ThemeProvider } from "../../Components/Context/DataContextProvider";
@@ -16,6 +16,7 @@ import {
   MenuItem,
   TextField,
   Paper,
+  OutlinedInput,
 } from "@mui/material";
 // icons
 import SearchIcon from "@mui/icons-material/Search";
@@ -34,23 +35,10 @@ const Countereis = ({ countereisData }: CountereisProps) => {
     localStorage.getItem("region")
   );
   // select option changer
-
   const changeHandler = (event: React.ChangeEvent<HTMLSelectElement>): any => {
-    event.preventDefault();
     localStorage.setItem("region", event.target.value);
     setRegion(localStorage.getItem("region"));
   };
-
-  useEffect(() => {
-    const LocalSetter = (region: string) => {
-      localStorage.clear();
-      localStorage.setItem("region", region);
-    };
-    if (localStorage.getItem("region")) {
-      setRegion(localStorage.getItem("region"));
-    }
-  }, [Stateregion]);
-
   // themes
   const lightColor = "hsl(200, 15%, 8%)";
   const darkColor = "hsl(0, 0%, 98%)";
