@@ -4,7 +4,7 @@ import { ThemeProvider } from "../Context/DataContextProvider";
 // mui comopnents
 import { Box, Toolbar, Typography, Button, AppBar } from "@mui/material";
 // icons
-import NightlightRoundOutlinedIcon from '@mui/icons-material/NightlightRoundOutlined';
+import NightlightRoundOutlinedIcon from "@mui/icons-material/NightlightRoundOutlined";
 // styled components
 import { Header } from "./navbar";
 
@@ -19,7 +19,7 @@ const Navbar = () => {
         <AppBar
           position="static"
           sx={{
-            background: darkMode ? "hsl(209, 23%, 22%)" : "white",
+            background: darkMode ? "hsl(209, 23%, 22%)" : "hsl(0, 0%, 98%)",
             padding: "0 2rem",
             "@media(max-width:600px)": { padding: "0 .5rem" },
           }}

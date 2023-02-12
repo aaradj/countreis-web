@@ -56,10 +56,10 @@ const Countery = () => {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top:5rem;
+    margin-top: 5rem;
     padding: 2rem 4rem;
     @media (max-width: 1200px) {
-      margin:0;
+      margin: 0;
       flex-direction: column;
       gap: 1rem;
       padding: 1rem 2rem;
@@ -238,4 +238,5 @@ const Countery = () => {
     </Container>
   );
 };
+
 export default Countery;

@@ -24,7 +24,7 @@ const Grid = styled.div`
 `;
 const Image = styled.div`
   width: 100%;
-  height: 13rem;
+  height: 12rem;
 `;
 const Img = styled.img`
   width: 100%;

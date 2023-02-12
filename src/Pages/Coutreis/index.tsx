@@ -50,8 +50,8 @@ const Countereis = ({ countereisData }: CountereisProps) => {
     background: ${darkMode ? DarkBackground : darkColor};
   `;
   return (
-    <PageLayout>
-      <Container>
+    <Container>
+      <PageLayout>
         <Header>
           <TextField
             size="medium"
@@ -102,14 +102,14 @@ const Countereis = ({ countereisData }: CountereisProps) => {
               if (region === "Asia") {
                 return (
                   <Paper
-                  elevation={3}
+                    elevation={3}
                     key={length}
                     sx={{
                       background: darkMode ? "hsl(209, 23%, 22%)" : "white",
                       display: "flex",
                       flexDirection: "column",
                       width: "20%",
-                      height: "23rem",
+                      height: "22rem",
                       overflow: "hidden",
                       borderRadius: "10px",
                       "@media(max-width:1200px)": {
@@ -131,6 +131,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                             sx={{ color: darkMode ? darkColor : lightColor }}
                             variant="h6"
                             fontWeight={"bold"}
+                            margin="0 0 1rem"
                           >
                             {name.common}
                           </Typography>
@@ -192,15 +193,16 @@ const Countereis = ({ countereisData }: CountereisProps) => {
               if (Stateregion === region) {
                 return (
                   <Paper
-                  elevation={3}
+                    elevation={3}
                     key={length}
                     sx={{
                       background: darkMode ? "hsl(209, 23%, 22%)" : "white",
                       display: "flex",
                       flexDirection: "column",
                       width: "20%",
-                      height: "23rem",
+                      height: "22rem",
                       overflow: "hidden",
+
                       borderRadius: "10px",
                       "@media(max-width:1200px)": {
                         width: "35%",
@@ -221,6 +223,7 @@ const Countereis = ({ countereisData }: CountereisProps) => {
                             sx={{ color: darkMode ? darkColor : lightColor }}
                             variant="h6"
                             fontWeight={"bold"}
+                            margin="0 0 1rem"
                           >
                             {name.common}
                           </Typography>
@@ -281,8 +284,8 @@ const Countereis = ({ countereisData }: CountereisProps) => {
             }
           })}
         </Grid>
-      </Container>
-    </PageLayout>
+      </PageLayout>
+    </Container>
   );
 };
 export default Countereis;
